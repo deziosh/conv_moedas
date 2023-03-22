@@ -37,8 +37,10 @@ class _HomeConverState extends State<HomeConver> {
           builder: (context, snapshot) {
             if (!snapshot.hasError) {
               if (snapshot.connectionState == ConnectionState.done) {
-                dolar = snapshot.data!['USD']['buy'];
-                euro = snapshot.data!['EUR']['buy'];
+                dolar = double.parse(snapshot.data!['USDBRL']['bid']);
+                euro = double.parse(snapshot.data!['EURBRL']['bid']);
+                // dolar = snapshot.data!['USD']['buy'];
+                // euro = snapshot.data!['EUR']['buy'];
                 return SingleChildScrollView(
                   padding: const EdgeInsets.only(top: 15, left: 10, right: 10),
                   child: Column(
@@ -131,16 +133,21 @@ class _HomeConverState extends State<HomeConver> {
 }
 
 Future<Map> getData() async {
-  const requestApi = "https://api.hgbrasil.com/finance?key=f29856b6";
-//  const requestApi =
-//      "https://api.hgbrasil.com/finance?format=json-cors&key=f29856b6";
-
-  print(requestApi);
+  const requestApi =
+      "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
   var response = await http.get(Uri.parse(requestApi));
-  print('teste');
+  return jsonDecode(response.body);
 
-//  print(response.statusCode);
-  //print(jsonDecode(response.body)['results']['currencies']['USD']);
+//   const requestApi = "https://api.hgbrasil.com/finance?key=f29856b6";
+// //  const requestApi =
+// //      "https://api.hgbrasil.com/finance?format=json-cors&key=f29856b6";
 
-  return jsonDecode(response.body)['results']['currencies'];
+//   print(requestApi);
+//   var response = await http.get(Uri.parse(requestApi));
+//   print('teste');
+
+// //  print(response.statusCode);
+//   //print(jsonDecode(response.body)['results']['currencies']['USD']);
+
+//   return jsonDecode(response.body)['results']['currencies'];
 }
