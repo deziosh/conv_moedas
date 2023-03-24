@@ -136,8 +136,8 @@ Future<Map> getData() async {
   //* ENDEREÇO DA API NOVA
   //* https://docs.awesomeapi.com.br/api-de-moedas
 
-  // const requestApi =
-  //     "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
+  const requestApi =
+      "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
   // var response = await http.get(Uri.parse(requestApi));
   // return jsonDecode(response.body);
   var response = {
