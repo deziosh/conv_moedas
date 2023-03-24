@@ -136,10 +136,40 @@ Future<Map> getData() async {
   //* ENDEREÇO DA API NOVA
   //* https://docs.awesomeapi.com.br/api-de-moedas
 
-  const requestApi =
-      "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
-  var response = await http.get(Uri.parse(requestApi));
-  return jsonDecode(response.body);
+  // const requestApi =
+  //     "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
+  // var response = await http.get(Uri.parse(requestApi));
+  // return jsonDecode(response.body);
+  var response = {
+    "USDBRL": {
+      "code": "USD",
+      "codein": "BRL",
+      "name": "Dólar Americano/Real Brasileiro",
+      "high": "5.3388",
+      "low": "5.2976",
+      "varBid": "0.0382",
+      "pctChange": "0.72",
+      "bid": "5.3348",
+      "ask": "5.3363",
+      "timestamp": "1679660987",
+      "create_date": "2023-03-24 09:29:47"
+    },
+    "EURBRL": {
+      "code": "EUR",
+      "codein": "BRL",
+      "name": "Euro/Real Brasileiro",
+      "high": "5.7429",
+      "low": "5.6772",
+      "varBid": "-0.0095",
+      "pctChange": "-0.17",
+      "bid": "5.7256",
+      "ask": "5.7293",
+      "timestamp": "1679660999",
+      "create_date": "2023-03-24 09:29:59"
+    }
+  };
+
+  return jsonDecode(jsonEncode(response));
 
 //   const requestApi = "https://api.hgbrasil.com/finance?key=f29856b6";
 // //  const requestApi =
