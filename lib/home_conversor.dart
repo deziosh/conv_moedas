@@ -138,9 +138,12 @@ Future<Map> getData() async {
 
   const requestApi =
       "https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL";
-  // var response = await http.get(Uri.parse(requestApi));
-  // return jsonDecode(response.body);
-  var response = {
+  var response = await http.get(Uri.parse(requestApi));
+  return jsonDecode(response.body);
+
+  //* json manual para teste em caso de
+  //* problema com a conexão http
+/*   var response = {
     "USDBRL": {
       "code": "USD",
       "codein": "BRL",
@@ -170,17 +173,5 @@ Future<Map> getData() async {
   };
 
   return jsonDecode(jsonEncode(response));
-
-//   const requestApi = "https://api.hgbrasil.com/finance?key=f29856b6";
-// //  const requestApi =
-// //      "https://api.hgbrasil.com/finance?format=json-cors&key=f29856b6";
-
-//   print(requestApi);
-//   var response = await http.get(Uri.parse(requestApi));
-//   print('teste');
-
-// //  print(response.statusCode);
-//   //print(jsonDecode(response.body)['results']['currencies']['USD']);
-
-//   return jsonDecode(response.body)['results']['currencies'];
+ */
 }
